@@ -24,7 +24,7 @@
         border-radius: 30px;
       }
       button {
-        background-color: rgb(147, 147, 148);
+        background-color: rgb(6, 6, 235);
         width: 58px;
         height: 58px;
         gap: 10px;
@@ -45,6 +45,8 @@
         padding: 60px 20px 20px 20px;
         text-align: right;
         word-wrap: break-word;
+        outline: none;
+        caret-color: rgb(236, 16, 16);
       }
     </style>
   </head>
@@ -95,7 +97,6 @@
       buttons.forEach((btn) => {
         btn.addEventListener("click", () => {
           const val = btn.innerText;
-
           if (val === "C") {
             display.textContent = "0";
           } else if (val === "D") {
@@ -105,7 +106,7 @@
               let expression = display.textContent.replace(/%/g, "/100");
               display.textContent = eval(expression);
             } catch {
-              display.textContent = "Error";
+              display.textContent = "Good luck:3";
             }
           } else if (val === "()") {
             const lastChar = display.textContent.slice(-1);
@@ -113,7 +114,10 @@
               display.textContent = "(";
             } else if ("+-*/".includes(lastChar) || lastChar === "(") {
               display.textContent += "(";
-            } else {
+            } else if (lastChar === ")") {
+              display.textContent += "*(";
+            } 
+            else {
               display.textContent += ")";
             }
           } else {
