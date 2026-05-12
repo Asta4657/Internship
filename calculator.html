@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: aquamarine;
+    }
+
+    .container {
+      background-color: rgb(252, 249, 249);
+      padding: 30px;
+      text-align: center;
+      border-radius: 12px;
+      width: 400px;
+      box-shadow: 0px 4px 15px rgb(0, 0, 0, 0, 1);
+      margin: 200px auto;
+    }
+
+    .input-gp {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    input,
+    select {
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      width: 100%;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-bottom: 20px;
+    }
+
+    .Result {
+      background-color: #d3dce6;
+      padding: 15px;
+      border-radius: 5px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: bold;
+    }
+
+    button:hover {
+      background-color: #022346;
+    }
+  </style>
+
+  <body>
+    <div class="container">
+      <h1>Mini Calculator</h1>
+
+      <div class="input-gp">
+        <input type="number" id="num1" />
+
+        <select id="operator">
+          <option value="+">+</option>
+          <option value="-">-</option>
+          <option value="*">*</option>
+          <option value="/">/</option>
+        </select>
+
+        <input type="number" id="num2" />
+      </div>
+
+      <button onclick="calculate()">Calculate Amount</button>
+
+      <div class="Result">
+        <span>Result:</span>
+        <span id="result-value">0</span>
+      </div>
+    </div>
+    <script>
+      function calculate() {
+        const n1 = parseFloat(document.getElementById("num1").value);
+        const n2 = parseFloat(document.getElementById("num2").value);
+        const op = document.getElementById("operator").value;
+        const resultDisplay = document.getElementById("result-value");
+
+        if (isNaN(n1) || isNaN(n2)) {
+          resultDisplay.innerText = "Error: Please enter the numbers";
+          resultDisplay.style.color = "red";
+          return;
+        }
+        let finalAmount = 0;
+        switch (op) {
+          case "+":
+            finalAmount = n1 + n2;
+            break;
+          case "-":
+            finalAmount = n1 - n2;
+            break;
+          case "*":
+            finalAmount = n1 * n2;
+            break;
+          case "/":
+            finalAmount =
+              n2 !== 0 ? n1 / n2 : "Error:The number can't be divided by zero";
+            break;
+        }
+        resultDisplay.innerText = finalAmount;
+        resultDisplay.style.color =
+          typeof finalAmount === "number" ? "green" : "red";
+      }
+    </script>
+  </body>
+</html>

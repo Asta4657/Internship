@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    main {
+        font-family: Arial, sans-serif;
+        /* background-color: #f0f0f0; */
+        /* padding: 20px; */
+        width: 800px;
+        margin: auto;
+    }
+
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: black;
+        padding: 10px 20px;
+    }
+
+    .logo {
+        color: white;
+        font-size: 24px;
+        font-weight: bold;
+    }
+
+    .nlink a {
+        color: white;
+        text-decoration: none;
+        margin-left: 20px;
+        font-size: 18px;
+    }
+
+    .container {
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+        padding: 40px;
+    }
+
+    .f1,
+    .f2,
+    .f3 {
+        background-color: rgb(217, 237, 244);
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        /* flex: 1; */
+        text-align: center;
+    }
+
+    /* .containerbox{
+        background-color: white;
+        padding: 20px;
+        display: flex;
+        flex: 1;
+        border-radius: 12px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        margin-top: 20px;
+    } */
+    .left {
+        margin-top: 20px;
+        display: flex;
+        /* flex: 1; */
+        flex-direction: column;
+        gap: 10px;
+        background-color: rgb(240, 238, 238);
+        border-radius: 10px;
+        padding: 20px;
+        border: 2px solid rgb(161, 160, 160);
+    }
+
+    .right {
+        margin-top: 20px;
+        display: flex;
+        flex: 1;
+        justify-content: center;
+        background-color: rgb(161, 160, 160);
+        border-radius: 10px;
+    }
+
+    /* .rightside{
+        background-color: rgb(52, 8, 245);
+        padding: 30px;
+        display: flex;
+        border-radius: 12px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        width: 300px;
+    } */
+    label {
+        margin-top: 10px;
+    }
+
+    select {
+        width: 100%;
+        padding: 8px;
+        margin-top: 5px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+    }
+
+    .cap {
+        display: flex;
+        gap: 20px;
+        /* padding-top: 10px; */
+        padding-bottom: 20px;
+    }
+
+    .preview {
+        background-color: rgb(18, 41, 250);
+        padding: 20px;
+        color: white;
+        border-radius: 6px;
+        margin: auto;
+        margin-left: 50px;
+        margin-right: 50px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+
+    .buttons {
+        display: flex;
+        gap: 20px;
+        margin-top: 20px;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+    }
+
+    button {
+        border-radius: 5px;
+        cursor: pointer;
+        border: none;
+        background-color: blue;
+        padding: 10px 20px;
+        color: white;
+    }
+</style>
+
+<body>
+    <main>
+        <header>
+            <h1>CSS Utility Simulator</h1>
+            <p>Change the inputs below to see how atomic classes combine to build Uls</p>
+        </header>
+
+        <div class="navbar">
+            <div class="logo">My Logo</div>
+            <div class="nlink">
+                <a href="#">Home</a>
+                <a href="#">About</a>
+                <a href="#">Contact</a>
+            </div>
+        </div>
+        <div class="container">
+            <div class="f1">Feature1</div>
+            <div class="f2">Feature2</div>
+            <div class="f3">Feature3</div>
+        </div>
+        <div class="cap">
+            <div class="left">
+                <h2>Utility Control</h2>
+                <div class="Form">
+                    <label>Padding (Spacing)</label>
+                    <select>
+                        <option>Medium P-8</option>
+                    </select>
+                </div>
+                <div class="Form">
+                    <label>Background Theme Colors</label>
+                    <select>
+                        <option>Primary Blue</option>
+                    </select>
+                </div>
+                <div class="Form">
+                    <label>Text Size (Typography)</label>
+                    <select>
+                        <option>Large (text-xl)</option>
+                    </select>
+                </div>
+                <div class="Form">
+                    <label>Corner Radius (Borders)</label>
+                    <select>
+                        <option>Square (rounded-none)</option>
+                    </select>
+                </div>
+                <div class="Form">
+                    <label>Shadow (Depth)</label>
+                    <select>
+                        <option>Medium (shadow-md)</option>
+                    </select>
+                </div>
+            </div>
+            <div class="right">
+                <div class="preview">
+                    <h3>Alex Walker</h3>
+                    <p>Full-Stack Web Developer building
+                        awesome things with Tailwind CSS.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="buttons">
+            <button>Submit</button>
+            <button>Hover me slowely!</button>
+        </div>
+    </main>
+</body>
+
+</html>

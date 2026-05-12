@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dom</title>
+    <style>
+
+          .body{
+            display: flex;
+            padding: 40px;
+            justify-content: center;
+            width: 600px;
+            height: 200px;
+          }
+         .container{
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            border-radius: 15px;
+            max-width: 700px;
+            margin: auto;
+            background-color: lightblue;
+            padding: 20px;
+        }
+
+        .fc1{
+            background-color: lightblue;
+            width: 400px;
+            height: 300px;
+        }
+        
+        .rightside{
+            background-color: white;
+            padding-left: 40px;
+            padding-top: 20px;
+            border: 2px;
+            width: 200px;
+            height: 100px;
+            margin-left: 20px;
+            border-radius: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .vipcheck2{
+            padding: 0px 5px 0px 5px;
+            background-color: gold;
+            border-radius: 20px;
+            width: 90px;
+            font-size: 13px;
+            font-family: 'Times New Roman', Times, serif;
+        }
+        .headerright{
+            font-size: 25px;
+            font-weight: bold;
+        }
+        .vari{
+            font-size: 25px;
+            font-weight: bold;
+        }
+        .name1{
+            border-radius: 5px;
+        }
+        
+    </style>
+</head>
+
+<body>
+   <div class="container">
+
+      <div class="fc1"> 
+    
+          <div class="vari">Update Variables</div>
+          
+          <br>
+         
+          <div>
+            <label for="name1">Name(String):</label>
+            <input type="text" id="name1">
+          </div><br>
+
+          <div>
+            <label for="age1">Age(number):</label>
+            <input type ="number" id="age1">
+          </div><br>
+       
+          <div>
+            <label for="vipcheck">VIP Status(Boolean):</label>
+            <input type="checkbox" id="vipcheck">
+          </div><br>
+
+         <div>
+            <label for="cardcolor1">Card color</label>
+            <input type="color" id="cardcolor">
+         </div> <br>
+    
+       
+        </div>
+
+    <div class="fc2">
+
+            <div class="headerright">Live DOM Output</div>
+            <br>
+
+
+        <div class="rightside">
+             <div class="vipcheck2">
+               <label for="vip" >
+                VIP MEMBER
+               </label>
+
+            </div><br>
+            <div class="namedisplay">
+                Alex Walker
+            </div><br>
+
+            <div class="agedisplay">
+                Age: 28
+
+            </div><br>
+
+        </div>
+            
+          </div>
+</div>
+</body>
+</html>

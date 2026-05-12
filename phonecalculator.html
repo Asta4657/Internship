@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Phone calculator</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        background-color: rgb(112, 72, 255);
+      }
+      .container {
+        background-color: white;
+        margin: auto;
+        width: 260px;
+        height: 500px;
+        margin-top: 50px;
+        justify-content: center;
+        border-radius: 30px;
+      }
+      button {
+        background-color: rgb(147, 147, 148);
+        width: 58px;
+        height: 58px;
+        gap: 10px;
+        border-radius: 100%;
+        border: none;
+        margin-bottom: 10px;
+        font-size: 20px;
+      }
+      .buttons {
+        /* margin-top: 140px; */
+        justify-content: space-around;
+        margin-left: 10px;
+        margin-bottom: 20px;
+      }
+      .display {
+        font-size: 30px;
+        font-weight: bold;
+        padding: 60px 20px 20px 20px;
+        text-align: right;
+        word-wrap: break-word;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="display">
+        <div id="previous-operand"></div>
+        <div id="current-operand">0</div>
+      </div>
+      <div class="buttons">
+        <div>
+          <button>C</button>
+          <button>D</button>
+          <button>%</button>
+          <button>/</button>
+        </div>
+        <div>
+          <button>7</button>
+          <button>8</button>
+          <button>9</button>
+          <button>*</button>
+        </div>
+        <div>
+          <button>4</button>
+          <button>5</button>
+          <button>6</button>
+          <button>-</button>
+        </div>
+        <div>
+          <button>1</button>
+          <button>2</button>
+          <button>3</button>
+          <button>+</button>
+        </div>
+        <div>
+          <button>()</button>
+          <button>0</button>
+          <button>.</button>
+          <button>=</button>
+        </div>
+      </div>
+    </div>
+    <script>
+      const display = document.getElementById("current-operand");
+      const buttons = document.querySelectorAll("button");
+
+      buttons.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const val = btn.innerText;
+
+          if (val === "C") {
+            display.textContent = "0";
+          } else if (val === "D") {
+            display.textContent = display.textContent.slice(0, -1) || "0";
+          } else if (val === "=") {
+            try {
+              let expression = display.textContent.replace(/%/g, "/100");
+              display.textContent = eval(expression);
+            } catch {
+              display.textContent = "Error";
+            }
+          } else if (val === "()") {
+            const lastChar = display.textContent.slice(-1);
+            if (display.textContent === "0") {
+              display.textContent = "(";
+            } else if ("+-*/".includes(lastChar) || lastChar === "(") {
+              display.textContent += "(";
+            } else {
+              display.textContent += ")";
+            }
+          } else {
+            if (display.textContent === "0" && val !== ".") {
+              display.textContent = val;
+            } else {
+              display.textContent += val;
+            }
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
