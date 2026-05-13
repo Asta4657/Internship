@@ -15,7 +15,7 @@
         background-color: rgb(112, 72, 255);
       }
       .container {
-        background-color: white;
+        background-color: rgb(2, 2, 2);
         margin: auto;
         width: 260px;
         height: 500px;
@@ -24,7 +24,7 @@
         border-radius: 30px;
       }
       button {
-        background-color: rgb(6, 6, 235);
+        background-color: rgb(194, 194, 199);
         width: 58px;
         height: 58px;
         gap: 10px;
@@ -38,15 +38,17 @@
         justify-content: space-around;
         margin-left: 10px;
         margin-bottom: 20px;
+        margin-top: 20px;
       }
       .display {
         font-size: 30px;
         font-weight: bold;
-        padding: 60px 20px 20px 20px;
+        padding: 60px 40px 40px 40px;
         text-align: right;
-        word-wrap: break-word;
-        outline: none;
-        caret-color: rgb(236, 16, 16);
+        /* word-wrap: break-word;
+        outline: none; */
+        overflow: hidden;
+        color: white;
       }
     </style>
   </head>
@@ -93,38 +95,96 @@
     <script>
       const display = document.getElementById("current-operand");
       const buttons = document.querySelectorAll("button");
+      const operators = ["+", "-", "*", "/", "%"];
 
       buttons.forEach((btn) => {
         btn.addEventListener("click", () => {
           const val = btn.innerText;
+          const current = display.textContent;
+          const lastChar = current.slice(-1);
+
+          // Clear Logic
           if (val === "C") {
             display.textContent = "0";
-          } else if (val === "D") {
-            display.textContent = display.textContent.slice(0, -1) || "0";
-          } else if (val === "=") {
+          }
+
+          // Delete Logic
+          else if (val === "D") {
+            display.textContent =
+              current.length > 1 ? current.slice(0, -1) : "0";
+          }
+
+          // Equals Logic (with auto-closing brackets)
+          else if (val === "=") {
             try {
-              let expression = display.textContent.replace(/%/g, "/100");
-              display.textContent = eval(expression);
+              let expression = current
+                .replace(/%/g, "/100")
+
+                // 8(2) -> 8*(2)
+                .replace(/(\d)\(/g, "$1*(")
+
+                // (2)8 -> (2)*8
+                .replace(/\)(\d)/g, ")*$1")
+
+                // )( -> )*(
+                .replace(/\)\(/g, ")*(");
+
+              // Count parens and close any that are missing
+              const openCount = (expression.match(/\(/g) || []).length;
+              const closeCount = (expression.match(/\)/g) || []).length;
+              if (openCount > closeCount) {
+                expression += ")".repeat(openCount - closeCount);
+              }
+
+              const result = eval(expression);
+              // Handle long decimals like 0.1 + 0.2
+              display.textContent = Number.isInteger(result)
+                ? result
+                : parseFloat(result.toFixed(8));
             } catch {
-              display.textContent = "Good luck:3";
+              display.textContent = "Error";
             }
           } else if (val === "()") {
-            const lastChar = display.textContent.slice(-1);
-            if (display.textContent === "0") {
-              display.textContent = "(";
-            } else if ("+-*/".includes(lastChar) || lastChar === "(") {
-              display.textContent += "(";
-            } else if (lastChar === ")") {
-              display.textContent += "*(";
-            } 
-            else {
+            const openCount = (current.match(/\(/g) || []).length;
+            const closeCount = (current.match(/\)/g) || []).length;
+
+            // Open bracket cases
+            if (
+              current === "0" ||
+              operators.includes(lastChar) ||
+              lastChar === "("
+            ) {
+              display.textContent = current === "0" ? "(" : current + "(";
+            }
+
+            // Close bracket if there is an unclosed "("
+            else if (openCount > closeCount) {
               display.textContent += ")";
             }
-          } else {
-            if (display.textContent === "0" && val !== ".") {
-              display.textContent = val;
-            } else {
-              display.textContent += val;
+
+            // If last char is a number or ")", auto multiply
+            else {
+              display.textContent += "*(";
+            }
+          }
+
+          // Operator and Number Logic
+          else {
+            if (operators.includes(val)) {
+              if (operators.includes(lastChar)) {
+                // Replace the last operator with the new one
+                display.textContent = current.slice(0, -1) + val;
+              } else {
+                display.textContent += val;
+              }
+            }
+             else {
+              // Input is a number
+              if (current === "0" && val !== ".") {
+                display.textContent = val;
+              } else {
+                display.textContent += val;
+              }
             }
           }
         });
