@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI ChatBot UI</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+    </style>
+</head>
+
+<body class="bg-[#0f172a] overflow-hidden">
+
+    <!-- Background Blur -->
+    <div class="absolute top-[-100px] left-[-100px] w-96 h-96 bg-purple-600 rounded-full blur-[150px] opacity-30">
+    </div>
+
+    <div class="absolute bottom-[-100px] right-[-100px] w-96 h-96 bg-cyan-500 rounded-full blur-[150px] opacity-20">
+    </div>
+
+    <!-- Main Container -->
+    <div class="w-full h-screen flex">
+
+        <!-- Sidebar -->
+        <aside
+            class="w-[280px] bg-white/5 backdrop-blur-xl border-r border-white/10 p-6 hidden lg:flex flex-col justify-between">
+
+            <div>
+
+                <!-- Logo -->
+                <div class="flex items-center gap-3">
+                    <div
+                        class="w-12 h-12 rounded-2xl bg-gradient-to-r from-purple-500 to-cyan-500 flex items-center justify-center text-white font-bold text-xl">
+                        AI
+                    </div>
+
+                    <div>
+                        <h1 class="text-white text-xl font-semibold">
+                            Nova AI
+                        </h1>
+
+                        <p class="text-gray-400 text-sm">
+                            Smart Assistant
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Menu -->
+                <div class="mt-12 space-y-3">
+
+                    <button
+                        class="w-full flex items-center gap-3 bg-gradient-to-r from-purple-500 to-cyan-500 text-white px-5 py-4 rounded-2xl">
+
+                        <span>💬</span>
+                        New Chat
+                    </button>
+
+                    <button
+                        class="w-full flex items-center gap-3 text-gray-300 hover:bg-white/10 px-5 py-4 rounded-2xl transition">
+                        <span>🕘</span>
+                        History
+                    </button>
+
+                    <button
+                        class="w-full flex items-center gap-3 text-gray-300 hover:bg-white/10 px-5 py-4 rounded-2xl transition">
+                        <span>📚</span>
+                        Study Notes
+                    </button>
+
+                    <button
+                        class="w-full flex items-center gap-3 text-gray-300 hover:bg-white/10 px-5 py-4 rounded-2xl transition">
+                        <span>🧠</span>
+                        AI Quiz
+                    </button>
+
+                    <button
+                        class="w-full flex items-center gap-3 text-gray-300 hover:bg-white/10 px-5 py-4 rounded-2xl transition">
+                        <span>⚙️</span>
+                        Settings
+                    </button>
+
+                </div>
+            </div>
+
+            <!-- Profile -->
+            <div class="bg-white/10 border border-white/10 rounded-3xl p-4 flex items-center gap-3">
+
+                <img class="w-12 h-12 rounded-full object-cover" src="https://i.pravatar.cc/100" alt="">
+
+                <div>
+                    <h2 class="text-white font-medium">
+                        Ko Ko
+                    </h2>
+
+                    <p class="text-gray-400 text-sm">
+                        CS Student
+                    </p>
+                </div>
+            </div>
+
+        </aside>
+
+        <!-- Chat Area -->
+        <main class="flex-1 flex flex-col">
+
+            <!-- Top Bar -->
+            <div
+                class="h-24 border-b border-white/10 bg-white/5 backdrop-blur-xl flex items-center justify-between px-6">
+
+                <div>
+                    <h1 class="text-white text-2xl font-semibold">
+                        AI Study Assistant
+                    </h1>
+
+                    <p class="text-gray-400 text-sm mt-1">
+                        Ask anything about programming & studies
+                    </p>
+                </div>
+
+                <!-- Status -->
+                <div class="bg-green-500/20 text-green-400 px-5 py-2 rounded-full text-sm border border-green-500/30">
+                    ● AI Online
+                </div>
+
+            </div>
+
+            <!-- Messages -->
+            <div class="flex-1 overflow-y-auto px-6 py-8 space-y-6">
+
+                <!-- AI Message -->
+                <div class="flex items-start gap-4">
+
+                    <div
+                        class="w-12 h-12 rounded-2xl bg-gradient-to-r from-purple-500 to-cyan-500 flex items-center justify-center text-white text-xl">
+                        🤖
+                    </div>
+
+                    <div
+                        class="max-w-[700px] bg-white/10 border border-white/10 rounded-3xl rounded-tl-none p-5 backdrop-blur-xl">
+
+                        <p class="text-gray-200 leading-relaxed">
+                            Hello Ko Ko 👋 <br><br>
+
+                            I’m your AI Study Assistant.
+                            Ask me anything about:
+                        </p>
+
+                        <div class="flex flex-wrap gap-3 mt-5">
+
+                            <span class="bg-purple-500/20 text-purple-300 px-4 py-2 rounded-full text-sm">
+                                React
+                            </span>
+
+                            <span class="bg-cyan-500/20 text-cyan-300 px-4 py-2 rounded-full text-sm">
+                                Python
+                            </span>
+
+                            <span class="bg-pink-500/20 text-pink-300 px-4 py-2 rounded-full text-sm">
+                                Database
+                            </span>
+
+                            <span class="bg-green-500/20 text-green-300 px-4 py-2 rounded-full text-sm">
+                                Algorithms
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- User Message -->
+                <div class="flex items-start gap-4 justify-end">
+
+                    <div
+                        class="max-w-[600px] bg-gradient-to-r from-purple-500 to-cyan-500 rounded-3xl rounded-tr-none p-5">
+
+                        <p class="text-white leading-relaxed">
+                            Explain binary search in simple words.
+                        </p>
+
+                    </div>
+
+                    <img class="w-12 h-12 rounded-2xl object-cover" src="https://i.pravatar.cc/101" alt="">
+
+                </div>
+
+                <!-- AI Reply -->
+                <div class="flex items-start gap-4">
+
+                    <div
+                        class="w-12 h-12 rounded-2xl bg-gradient-to-r from-purple-500 to-cyan-500 flex items-center justify-center text-white text-xl">
+                        🤖
+                    </div>
+
+                    <div
+                        class="max-w-[700px] bg-white/10 border border-white/10 rounded-3xl rounded-tl-none p-5 backdrop-blur-xl">
+
+                        <p class="text-gray-200 leading-relaxed">
+                            Binary search is a fast searching method that works
+                            on sorted data.
+
+                            <br><br>
+
+                            Instead of checking every item one by one,
+                            it repeatedly divides the list into half until
+                            the target is found.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- Input Area -->
+            <div class="p-6 border-t border-white/10 bg-white/5 backdrop-blur-xl">
+
+                <div class="bg-white/10 border border-white/10 rounded-3xl p-4 flex items-center gap-4">
+
+                    <input type="text" placeholder="Ask anything..."
+                        class="flex-1 bg-transparent outline-none text-white placeholder:text-gray-400">
+
+                    <button
+                        class="w-14 h-14 rounded-2xl bg-gradient-to-r from-purple-500 to-cyan-500 text-white text-xl hover:scale-105 transition">
+                        ➤
+                    </button>
+
+                </div>
+
+            </div>
+
+        </main>
+
+    </div>
+
+</body>
+
+</html>
